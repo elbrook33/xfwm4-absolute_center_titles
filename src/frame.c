@@ -496,7 +496,8 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
                 hoffset = w3 - logical_rect.width - screen_info->params->title_horizontal_offset;
                 break;
             case ALIGN_CENTER:
-                hoffset = (w3 / 2) - (logical_rect.width / 2);
+                //hoffset = (w3 / 2) - (logical_rect.width / 2); // Centers title in the space between the buttons to its left and right.
+		hoffset = (width / 2) - (logical_rect.width / 2) - left; // Centers title within the titlebar as a whole, even if there are more buttons to its left than right or vice versa.
                 break;
         }
         if (hoffset < screen_info->params->title_horizontal_offset)
