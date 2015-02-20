@@ -197,6 +197,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
 
     /* Placement tab */
     GtkWidget *placement_ratio_scale = GTK_WIDGET (gtk_builder_get_object (builder, "placement_ratio_scale"));
+    GtkWidget *placement_ratio_max_scale = GTK_WIDGET (gtk_builder_get_object (builder, "placement_ratio_max_scale"));
     GtkWidget *placement_center_option = GTK_WIDGET (gtk_builder_get_object (builder, "placement_center_option"));
     GtkWidget *placement_mouse_option = GTK_WIDGET (gtk_builder_get_object (builder, "placement_mouse_option"));
 
@@ -389,6 +390,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/placement_ratio",
                             G_TYPE_INT,
                             (GObject *) gtk_range_get_adjustment (GTK_RANGE (placement_ratio_scale)), "value");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/placement_ratio_max",
+                            G_TYPE_INT,
+                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (placement_ratio_max_scale)), "value");
 
     /* Compositing tab */
     xfconf_g_property_bind (xfwm4_channel,

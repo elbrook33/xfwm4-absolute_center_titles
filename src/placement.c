@@ -831,7 +831,8 @@ clientInitPosition (Client * c)
                 centerPlacement (c, full_x, full_y, full_w, full_h);
             }
         }
-        else if ((frameExtentWidth(c) >= full_w) && (frameExtentHeight(c) >= full_h))
+        else if ((frameExtentWidth(c) >= full_w) && (frameExtentHeight(c) >= full_h) ||
+            (100 * frameExtentWidth(c) * frameExtentHeight(c)) > (screen_info->params->placement_ratio_max * full_w * full_h))
         {
             centerPlacement (c, full_x, full_y, full_w, full_h);
         }

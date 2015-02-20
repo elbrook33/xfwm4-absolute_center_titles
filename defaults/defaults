@@ -27,6 +27,7 @@ maximized_offset=0
 move_opacity=100
 placement_mode=center
 placement_ratio=20
+placement_ratio=60
 popup_opacity=100
 mousewheel_rollup=true
 prevent_focus_stealing=false

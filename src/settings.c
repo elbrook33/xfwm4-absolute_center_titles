@@ -738,6 +738,7 @@ loadSettings (ScreenInfo *screen_info)
         {"maximized_offset", NULL, G_TYPE_INT, TRUE},
         {"move_opacity", NULL, G_TYPE_INT, TRUE},
         {"placement_ratio", NULL, G_TYPE_INT, TRUE},
+        {"placement_ratio_max", NULL, G_TYPE_INT, TRUE},
         {"placement_mode", NULL, G_TYPE_STRING, TRUE},
         {"popup_opacity", NULL, G_TYPE_INT, TRUE},
         {"mousewheel_rollup", NULL, G_TYPE_BOOLEAN, FALSE},
@@ -853,6 +854,8 @@ loadSettings (ScreenInfo *screen_info)
         CLAMP (getIntValue ("popup_opacity", rc), 0, 100);
     screen_info->params->placement_ratio =
         CLAMP (getIntValue ("placement_ratio", rc), 0, 100);
+    screen_info->params->placement_ratio_max =
+        CLAMP (getIntValue ("placement_ratio_max", rc), 0, 100);
     screen_info->params->shadow_opacity =
         CLAMP (getIntValue ("shadow_opacity", rc), 0, 100);
     screen_info->params->show_app_icon =
@@ -1234,6 +1237,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "placement_ratio"))
                 {
                     screen_info->params->placement_ratio = CLAMP (g_value_get_int(value), 0, 100);
+                }
+                else if (!strcmp (name, "placement_ratio_max"))
+                {
+                    screen_info->params->placement_ratio_max = CLAMP (g_value_get_int(value), 0, 100);
                 }
                 else if (!strcmp (name, "cycle_tabwin_mode"))
                 {
